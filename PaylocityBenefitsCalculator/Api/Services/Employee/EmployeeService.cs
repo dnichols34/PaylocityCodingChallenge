@@ -166,7 +166,7 @@ namespace Api.Services.Employee
 
                 //calculate initial paycheck distribution
                 var baseNetPay = employee.Salary / paycheckCount;
-                var extraBenefitCost = employee.Salary > payLimit ? employee.Salary * extraPercentage : 0;
+                var extraBenefitCost = employee.Salary > payLimit ? employee.Salary * extraPercentage / 100 : 0;
 
                 var perMonthExtraCost = extraBenefitCost / paycheckCount;
 
