@@ -126,7 +126,7 @@ public class EmployeesController : ControllerBase
         return result;
     }
 
-    [SwaggerOperation(Summary = "Add Employee")]
+    [SwaggerOperation(Summary = "Add employee")]
     [HttpPost("add")]
     public async Task<ActionResult<ApiResponse<GetEmployeeDto>>> AddEmployee([FromBody] GetEmployeeDto newEmployeeModel, CancellationToken token)
     {

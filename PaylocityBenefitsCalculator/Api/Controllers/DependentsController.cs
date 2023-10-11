@@ -43,7 +43,7 @@ public class DependentsController : ControllerBase
     }
 
 
-    [SwaggerOperation(Summary = "Add Employee Dependent")]
+    [SwaggerOperation(Summary = "Add employee dependent")]
     [HttpPost("add/dependent/{employeeId}")]
     public async Task<ActionResult<ApiResponse<GetDependentDto>>> AddEmployeeDependent(int employeeId, [FromBody] GetDependentDto newDependentModel, CancellationToken token)
     {
