@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+	<PreserveCompilationContext>true</PreserveCompilationContext>
+
+  </PropertyGroup>
+  <ItemGroup>
+	<None Update="bin\$(Configuration)\$(TargetFramework)\Api.deps.json">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.9" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\Employee\" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include=".ApiTests" />
+		<!-- THIS LINE to make private classes like Program.cs available to any xUnit project with suffix .FunctionalTests-->
+	</ItemGroup>
+	
+</Project>
