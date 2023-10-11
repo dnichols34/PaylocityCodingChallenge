@@ -1,4 +1,5 @@
 ﻿using Api.Services.Dependent;
+using Api.Services.Employee;
 
 namespace Api.Services
 {
@@ -17,6 +18,10 @@ namespace Api.Services
                 .FirstOrDefault()!;
         }
 
-
+        public IEmployeeService GetEmployeeService()
+        {
+            return _dataServices.OfType<EmployeeService>()
+                .FirstOrDefault()!;
+        }
     }
 }

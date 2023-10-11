@@ -22,7 +22,7 @@ public class GetDependentDto
             FirstName = entity.FirstName,
             LastName = entity.LastName,
             DateOfBirth = entity.DateOfBirth,
-            Relationship = entity.Relationship
+            Relationship = entity.Relationship,
 
         };
 
@@ -34,8 +34,8 @@ public class GetDependentDto
         var entity = new Api.Models.Dependent
         {
             Id = Id,
-            FirstName = FirstName,
-            LastName = LastName,
+            FirstName = FirstName?.Trim(),
+            LastName = LastName?.Trim(),
             DateOfBirth = DateOfBirth,
             Relationship = Relationship
 

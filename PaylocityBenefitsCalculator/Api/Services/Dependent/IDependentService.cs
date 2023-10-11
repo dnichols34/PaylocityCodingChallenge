@@ -6,6 +6,7 @@ namespace Api.Services.Dependent
     public interface IDependentService : IDataService
     {
         Task<ApiResponse<GetDependentDto>> GetDependentByIdAsync(int id, CancellationToken token);
-        Task<List<GetDependentDto>> GetAllDependentsAsync(CancellationToken token);
+        Task<ApiResponse<List<GetDependentDto>>> GetAllDependentsAsync(CancellationToken token);
+        Task<ApiResponse<GetDependentDto>> AddDependentAsync(int employeeId, GetDependentDto dto, CancellationToken token);
     }
 }

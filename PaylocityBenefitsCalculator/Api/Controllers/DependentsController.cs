@@ -42,10 +42,16 @@ public class DependentsController : ControllerBase
         return Ok(result);
     }
 
-    [SwaggerOperation(Summary = "Add Dependent")]
-    [HttpPost("add")]
-    public async Task<ActionResult<ApiResponse<List<GetDependentDto>>>> AddDependent([FromBody] GetDependentDto newDependentModel)
+
+    [SwaggerOperation(Summary = "Add Employee Dependent")]
+    [HttpPost("add/dependent/{employeeId}")]
+    public async Task<ActionResult<ApiResponse<GetDependentDto>>> AddEmployeeDependent(int employeeId, [FromBody] GetDependentDto newDependentModel, CancellationToken token)
     {
-        throw new NotImplementedException();
+        var result = await _dependentService.AddDependentAsync(employeeId, newDependentModel, token);
+
+        if (!result.Success)
+            return BadRequest(result);
+
+        return Ok(result);
     }
 }

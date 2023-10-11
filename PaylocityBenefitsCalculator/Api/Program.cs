@@ -1,6 +1,7 @@
 using Api.MockData;
 using Api.Services;
 using Api.Services.Dependent;
+using Api.Services.Employee;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,10 +29,16 @@ builder.Services.AddCors(options =>
         policy => { policy.WithOrigins("http://localhost:3000", "http://localhost"); });
 });
 
-//builder.Services.AddSingleton<Data>();
 
 builder.Services.AddSingleton<IMockData, Data>();
+
+//to be used in the MasterDataFactory they need to all have the same interface at a
+//base level so a list can be injected into master data factory constructor 
+
 builder.Services.AddTransient<IDataService, DependentService>();
+builder.Services.AddTransient<IDataService, EmployeeService>();
+
+//this is the factory thats gets created and can pull services into services or controllers where needed
 builder.Services.AddTransient<MasterDataFactory>();
 
 var app = builder.Build();
